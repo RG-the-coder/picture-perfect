@@ -44,3 +44,21 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Private configuration
+.env
+.env.*
+
+# Python
+.venv*/
+__pycache__/
+*.pyc
+
+# Flutter generated files
+build/
+.picture_perfect_build/
+
+# Local WSL files
+wsl/
+*.wsl
+*.vhdx

@@ -1,0 +1,7 @@
+{
+  "service": "picture-perfect-analysis",
+  "apiVersion": 1,
+  "schemaVersion": 1,
+  "baseUrl": "https://clado-ai--freesolo-lora-serving.modal.run/v1",
+  "modelRevision": "flash-1784397077-b6e293a2@final.85e6c1d65d7fdf86571a7fe8d27147f8b83845fc"
+}
