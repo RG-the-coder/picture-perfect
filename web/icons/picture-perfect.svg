@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Picture Perfect camera mark">
+  <rect width="512" height="512" rx="116" fill="#090C0A"/>
+  <rect x="62" y="62" width="388" height="388" rx="104" fill="#D4FF72"/>
+  <path d="M151 196c0-18 15-33 33-33h42l17-25h74l18 25h16c18 0 33 15 33 33v141c0 18-15 33-33 33H184c-18 0-33-15-33-33V196Z" fill="#090C0A"/>
+  <circle cx="267" cy="266" r="76" fill="#D4FF72"/>
+  <circle cx="267" cy="266" r="48" fill="#090C0A"/>
+  <circle cx="341" cy="205" r="12" fill="#D4FF72"/>
+</svg>

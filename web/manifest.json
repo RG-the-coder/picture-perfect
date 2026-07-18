@@ -1,0 +1,20 @@
+{
+  "name": "Picture Perfect",
+  "short_name": "Picture Perfect",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#090C0A",
+  "theme_color": "#090C0A",
+  "description": "Private, on-device photo analysis with clear coaching for your next shot.",
+  "orientation": "any",
+  "prefer_related_applications": false,
+  "categories": ["photo", "productivity", "utilities"],
+  "icons": [
+    {
+      "src": "icons/picture-perfect.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

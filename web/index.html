@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="$FLUTTER_BASE_HREF">
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Capture or upload a photo and get a private, step-by-step plan to improve the light, clarity, and composition.">
+  <meta name="theme-color" content="#090C0A">
+  <meta name="color-scheme" content="dark">
+  <meta property="og:title" content="Picture Perfect">
+  <meta property="og:description" content="Take the shot you meant to take with on-device photo coaching.">
+  <meta property="og:type" content="website">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Picture Perfect">
+
+  <link rel="icon" type="image/svg+xml" href="icons/picture-perfect.svg">
+  <link rel="manifest" href="manifest.json">
+  <title>Picture Perfect — Your on-device photo coach</title>
+
+  <style>
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+      background: #090C0A;
+    }
+
+    body {
+      overflow: hidden;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    #app-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: grid;
+      place-items: center;
+      background: #090C0A;
+      color: #F5F5EF;
+      transition: opacity 180ms ease;
+    }
+
+    #app-loader.is-hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .loader-lockup {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+    }
+
+    .loader-mark {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      border-radius: 13px;
+      background: #D4FF72;
+      color: #090C0A;
+      font-size: 21px;
+      animation: breathe 1.2s ease-in-out infinite alternate;
+    }
+
+    @keyframes breathe {
+      from { transform: scale(.96); opacity: .72; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .loader-mark { animation: none; }
+      #app-loader { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <div id="app-loader" role="status" aria-label="Loading Picture Perfect">
+    <div class="loader-lockup">
+      <span class="loader-mark" aria-hidden="true">●</span>
+      <span>Picture Perfect</span>
+    </div>
+  </div>
+  <noscript>Picture Perfect needs JavaScript enabled to use your browser camera and analyze photos.</noscript>
+  <script>
+    window.addEventListener('flutter-first-frame', function () {
+      const loader = document.getElementById('app-loader');
+      if (!loader) return;
+      loader.classList.add('is-hidden');
+      window.setTimeout(function () { loader.remove(); }, 220);
+    });
+  </script>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
