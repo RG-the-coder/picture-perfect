@@ -4,9 +4,7 @@ Requires Python 3.11 or newer.
 
 This service accepts the existing browser-derived image measurements, asks an
 optional deployed FreeSolo adapter for ordered action codes, validates those codes
-against deterministic rules, and renders only vetted coaching text. It does
-not send image pixels to FreeSolo because multimodal input is not part of the
-documented serving contract yet.
+against deterministic rules, and renders vetted coaching text.
 
 ## Configure
 
@@ -42,15 +40,15 @@ FREESOLO_CAPTURE_TIMEOUT_SECONDS=5.0
 FREESOLO_MAX_TOKENS=128
 ```
 
-Preview requests are deterministic and entirely local by default, so the live
-camera path does not wait on network inference. Capture requests may use the
+Preview requests use the deterministic engine by default, so the live camera
+path does not wait on model inference. Capture requests may use the
 configured FreeSolo deployment and have a strict end-to-end five-second model
 deadline. Set `FREESOLO_ENABLE_PREVIEW=true` only when
 you intentionally want remote preview inference; its calls retain the preview
 timeout above. The preview switch accepts only `true` or `false` (case
 insensitive) and rejects invalid values at startup.
 
-The saved-credential local runner performs one 25-second startup-only warm-up
+The saved-credential runner performs one 25-second startup-only warm-up
 before Uvicorn becomes healthy. This absorbs a cold deployment without
 loosening the five-second deadline for real capture requests. Health reports
 `startupModelStatus` as `validated`, `responded-rejected`, or `unavailable`;
@@ -107,11 +105,9 @@ exactly three `{title, instruction, priority, overlay}` steps. The
 `X-Analysis-Source` header is `freesolo-validated` only when the model returned
 the exact canonical ordered action codes; otherwise it is
 `deterministic-fallback`. `X-Model-Revision` is included only on a validated
-model result, never on a local or rejected-model fallback.
+model result and omitted otherwise.
 `X-Model-Attempted` and `X-Model-Responded` distinguish a safely rejected
-model answer from a provider timeout without exposing response content or
-credentials. This lets startup verify reachability without ever accepting an
-incorrect ranking.
+model answer from a provider timeout for startup reachability diagnostics.
 
 FreeSolo requests use its supported `response_format: {"type":"json_object"}`
 mode. That mode guarantees JSON syntax, not the application contract. The
